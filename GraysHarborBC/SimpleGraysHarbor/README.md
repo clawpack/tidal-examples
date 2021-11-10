@@ -19,8 +19,8 @@ at Westport.
 ## `kingtide2015` directory
 
 Simulates the King Tide event from December, 2015.  
-The notebook downloads observations at the Westport and Aberdeen tide gauges and adjusts 
+The notebook downloads NOAA predictions at the Westport and Aberdeen tide gauges and adjusts 
 the Westport data to obtain the tidal signal to be applied on the left boundary.
 After running GeoClaw with this input, the same notebook shows the
-resulting simulated tides compared to the observations.
+resulting simulated tides compared to the NOAA predictions.
 
