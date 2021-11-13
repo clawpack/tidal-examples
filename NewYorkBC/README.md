@@ -11,4 +11,3 @@ region from the etopo1 database.
 In this directory, the right boundary condition is implemented using
 pure sine wave oscillation with amplitude 1. The notebook shows the simulation.
 
-Feel free to contact yz3889@columbia.edu if you have any questions about the code.
