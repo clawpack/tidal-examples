@@ -21,7 +21,7 @@ PLOTDIR = _plots               # Directory for plots
 # Environment variable FC should be set to fortran compiler, e.g. gfortran
 
 # Compiler flags can be specified here or set as an environment variable
-FFLAGS ?= 
+FFLAGS ?=
 
 # ---------------------------------
 # package sources for this program:
@@ -32,7 +32,7 @@ include $(GEOLIB)/Makefile.geoclaw
 
 # ---------------------------------------
 # package sources specifically to exclude
-# (i.e. if a custom replacement source 
+# (i.e. if a custom replacement source
 #  under a different name is provided)
 # ---------------------------------------
 
@@ -44,8 +44,12 @@ EXCLUDE_SOURCES = \
 # List of custom sources for this program:
 # ----------------------------------------
 
+MODULES = \
+  setprob_module.f90 \
+
 SOURCES = \
   bc2amr.f90 \
+	setprob.f90 \
   $(CLAW)/riemann/src/rpn2_geoclaw.f \
   $(CLAW)/riemann/src/rpt2_geoclaw.f \
   $(CLAW)/riemann/src/geoclaw_riemann_utils.f \
@@ -59,8 +63,7 @@ include $(CLAWMAKE)
 topo:
 	python maketopo.py
 
-all: 
+all:
 	$(MAKE) topo
 	$(MAKE) .plots
 	$(MAKE) .htmls
-

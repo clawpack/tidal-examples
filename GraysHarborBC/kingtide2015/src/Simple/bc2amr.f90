@@ -89,6 +89,7 @@ subroutine bc2amr(val,aux,nrow,ncol,meqn,naux, hx, hy, level, time,   &
                   xlo_patch, xhi_patch, ylo_patch, yhi_patch)
     use amr_module
     use geoclaw_module, only: pi
+    use setprob_module, only: a
     !use amr_module, only: mthbc, xlower, ylower, xupper, yupper
     !use amr_module, only: xperdom,yperdom,spheredom
 
@@ -105,8 +106,6 @@ subroutine bc2amr(val,aux,nrow,ncol,meqn,naux, hx, hy, level, time,   &
     ! Local storage
     integer :: i, j, ibeg, jbeg, nxl, nxr, nyb, nyt,  t_num
     real(kind=8) :: hxmarg, hymarg, jump_h, h_r, h_m, u_r, delt
-    real, DIMENSION(1201) :: a
-    INTEGER :: col,rows,io
     hxmarg = hx * .01d0
     hymarg = hy * .01d0
 
@@ -130,21 +129,6 @@ subroutine bc2amr(val,aux,nrow,ncol,meqn,naux, hx, hy, level, time,   &
         select case(mthbc(1))
             case(0) ! User defined boundary condition
               ! Getting the jump in tidal signal using linear Intepolation on height.txt
-              rows = 0
-              OPEN(UNIT=19, FILE="tidal_signal.txt")
-              !count # of rows
-              DO
-              READ(19,*,iostat=io)
-              IF (io/=0) EXIT
-              rows = rows + 1
-              END DO
-
-              rewind(19)
-              !export as a()
-              DO col = 1, rows
-                READ(19,*) a(col)
-              END DO
-              close(19)
               t_num = floor(time/360)
               delt = possk(level)
               jump_h = (a(t_num+2) - a(t_num+1))*delt/360
