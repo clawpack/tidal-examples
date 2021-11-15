@@ -29,7 +29,7 @@ def b4run(rundir, outdir):
 
     # ---------------------------------------------------------------------
     # files to copy to outdir (in addition to *.data files always copied):
-    to_copy = ['Makefile', '*.py', '*.f*', 'tidedata_dec2015.txt']
+    to_copy = ['Makefile', '*.py', '*.f*', 'tidedata_dec2015.txt','tidal_signal.txt']
     #to_copy = ['Makefile', '*.py', '*.f*']
 
     if rundir != outdir:
