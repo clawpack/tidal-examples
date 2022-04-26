@@ -1,0 +1,3 @@
+[submodule "pytides"]
+	path = pytides
+	url = https://github.com/clawpack/pytides.git
