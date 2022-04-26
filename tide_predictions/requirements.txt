@@ -1,7 +1,0 @@
-###### Requirements ######
-numpy
-scipy
-matplotlib
-pandas
-requests
-lxml
